@@ -7917,7 +7917,7 @@
       var modelName = typeClass.modelName;
       var recordArray = store.peekAll(modelName);
       var snapshotArray = recordArray.createSnapshot(options);
-      var promise = adapter.findAll(store, typeClass, sinceToken, snapshotArray);
+      var promise = adapter.findAll(store, typeClass, sinceToken, snapshotArray, options);
       var serializer = ember$data$lib$system$store$serializers$$serializerForAdapter(store, adapter, modelName);
       var label = "DS: Handle Adapter#findAll of " + typeClass;
 
@@ -11588,7 +11588,7 @@
         `_attributes` then the user has a local changed to the attribute
         that has not been synced with the server and the key is not
         included in the list of changed keys.
-      
+
         If the value, for a key differs from the value in what Ember Data
         believes to be the truth about the backend state (A merger of the
         `_data` and `_inFlightAttributes` objects where
